@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="/static/favourites_styles.css" rel="stylesheet">
+    <link href="/static/favourite_artists_styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Favourite artists
+{% endblock %} 
+
+{% block main %}
+<div class="loading-overlay" id="page-reload-loading-info">
+    <div class="loading-content">
+        <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span class="loading-info">Loading your favourites...</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <span class="section-header"> <span class="section-header-top-20">Top 20</span> artists - {{ displayed_time_range }}</span>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row gx-3">
+                            {% for j in range(0, 2) %}
+                                <div class="col-6">
+                                    <a href="{{ artist_data[j].artist_url }}" target="_blank">
+                                        <img src="{{ artist_data[j].artist_profile_photo }}" class="d-block" alt="Profile photo of {{ artist_data[j].artist_name}}">
+                                    </a>
+                                    <hr>
+                                    <span class="artist-name-display">{{ j+1 }}. {{ artist_data[j].artist_name }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% for i in range(2, artist_data|length, 2) %}
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row gx-3">
+                                {% for j in range(0, 2) %}
+                                    <div class="col-6">
+                                        {% if i + j < artist_data|length %}
+                                            <a href="{{ artist_data[i+j].artist_url }}" target="_blank">
+                                                <img src="{{ artist_data[i+j].artist_profile_photo }}" class="d-block" alt="Profile photo of {{ artist_data[i+j].artist_name }}">
+                                            </a>
+                                            <hr>
+                                            <span class="artist-name-display">{{ i+j+1 }}. {{ artist_data[i+j].artist_name }}</span>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/scripts/utils.js"></script>
+
+{% endblock %}

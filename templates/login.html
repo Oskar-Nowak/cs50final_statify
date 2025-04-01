@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="/static/login_styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+      <div class="container login-content">
+          <div class="login-custom-text">
+            <div class="line" id="line-1">
+                <span>Your favourite</span>
+                <span class="highlighted">tracks,</span>
+            </div>
+            <div class="line" id="line-2">
+                <span class="highlighted">artists</span>
+                <span>and</span>
+                <span class="highlighted">genres.</span>
+            </div>
+            <div class="line" id="line-3">
+              <span id="typewriter-text" class="typewriter"></span><span id="cursor" class="cursor">|</span>
+            </div>
+          </div>
+          <div class="buttons-container">
+            <form action="/login" method="get">
+              <button class="btn login-btn" type="submit">Log in</button>
+            </form>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/scripts/utils.js"></script>
+<script src="/static/scripts/typewriter_effect.js"></script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="/static/favourites_styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Homepage
+{% endblock %} 
+
+
+{% block main %}
+<div class="loading-overlay" id="page-reload-loading-info">
+    <div class="loading-content">
+        <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span class="loading-info">Loading your favourites...</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="homepage-custom-text">
+        <div class="line" id="line-1">
+            <span>Discover your</span>
+            <span class="highlighted">top 20.</span>
+        </div>
+    </div>
+    <div class="button-container">
+        <form action="/favourite-tracks" method="get">
+            <button class="btn pick-favourites-btn" type="submit">Tracks</button>
+        </form>
+        <form action="/favourite-artists" method="get">
+            <button class="btn pick-favourites-btn" type="submit">Artists</button>
+        </form>
+        <form action="/favourite-genres" method="get">
+            <button class="btn pick-favourites-btn" type="submit">Genres</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/scripts/utils.js"></script>
+{% endblock %}

@@ -1,0 +1,81 @@
+.section-header {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.spinner-container {
+    max-height: 150px;
+    height: 150px !important;
+    padding-top: 10px;
+}
+
+.track-title-display {
+    font-weight: 350;
+    font-size: 1.1rem;
+    display: inline-block;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-inner {
+    height: 390px;
+    margin-top: 15px;  
+}
+
+.artist-name-display {
+    font-weight: 150;
+}
+
+#create-playlist-form {
+    margin-top: 15px;
+    max-height: 200px;
+}
+
+#create-playlist-btn {
+    background-color: #1DB964;
+    color: #FFFFFF; 
+    width: 270px;
+    height: 75px;
+    font-weight: 25;
+    font-size: 2.2rem;
+    border-radius: 75px ! important;
+    /* font-style: italic;  */
+    /* background-color: #fbfbfb; */
+    /* color: #191414 */
+}
+
+#create-playlist-btn:hover {
+    background-color: #179f54;
+    /* box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), 
+    -10px -10px 10px white;  */
+    /* color: #1DB964 !important;  */
+}
+
+#create-playlist-spinner {
+    margin: auto;
+}
+
+#view-playlist-btn {
+    margin: auto;
+    background-color: #191414;
+    color: #FFFFFF;
+    /* border-color: #1DB964; */
+    width: 270px;
+    height: 75px;
+    font-weight: 25;
+    font-size: 2.2rem;
+    /* font-style: italic; */
+    border-radius: 75px !important;
+}
+
+#view-playlist-btn:hover {
+    background-color: #100d0d;
+    /* box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), 
+    -10px -10px 10px white; */
+    /* color: #1DB964 !important;  */
+}
+
+#create-playlist-loading-info {
+    display: none;
+}

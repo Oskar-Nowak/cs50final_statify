@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="/static/favourites_styles.css" rel="stylesheet">
+    <link href="/static/favourite_tracks_styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Favourite tracks
+{% endblock %} 
+
+{% block main %}
+<div class="loading-overlay" id="page-reload-loading-info">
+    <div class="loading-content">
+        <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span class="loading-info">Loading your favourites...</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <span class="section-header"> <span class="section-header-top-20">Top 20</span> tracks - {{ displayed_time_range }}</span>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row gx-3">
+                            {% for j in range(0, 4) %}
+                                <div class="col-3">
+                                    <a href="{{ track_data[j].track_url }}" target="_blank">
+                                        <img src="{{ track_data[j].album_cover_url }}" class="d-block" alt="Cover of {{ track_data[j].track_name}} by {{ track_data[j].artist_name[0] }} ">
+                                    </a>
+                                    <hr>
+                                    <h5 class="track-title-display">{{ j+1 }}. {{ track_data[j].track_name }}</h5>
+                                    <h6 class="artist-name-display">
+                                        {% for artist_name in track_data[j].artist_name %}
+                                            {{ artist_name }}{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </h6>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% for i in range(4, track_data|length, 4) %}
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row gx-3">
+                                {% for j in range(0, 4) %}
+                                    <div class="col-3">
+                                        {% if i + j < track_data|length %}
+                                            <a href="{{ track_data[i+j].track_url }}" target="_blank">
+                                                <img src="{{ track_data[i+j].album_cover_url }}" class="d-block" alt="Cover of {{ track_data[i+j].track_name}} by {{ track_data[i+j].artist_name[0] }} ">
+                                            </a>
+                                            <hr>
+                                            <h5 class="track-title-display">{{ i+j+1 }}. {{ track_data[i+j].track_name }}</h5>
+                                            <h6 class="artist-name-display">
+                                                {% for artist_name in track_data[i+j].artist_name %}
+                                                    {{ artist_name }}{% if not loop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </h6>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    <form action="/create-playlist" method="post" id="create-playlist-form">
+        <button class="btn" id="create-playlist-btn" type="submit">Create playlist</button>
+        <button class="btn" id="view-playlist-btn" type="button" style="display: none" >View playlist</button>
+    </form>
+    <div class="spinner-container">
+        <div class="spinner-border text-dark" role="status" id="create-playlist-spinner" style="display: none">
+            <span class="visually-hidden">Loading...</span>
+        </div> 
+        <span id="create-playlist-loading-info" class="loading-info"> Creating your playlist... </span>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/scripts/utils.js"></script>
+<script src="/static/scripts/playlist_button_change.js"></script>
+{% endblock %}

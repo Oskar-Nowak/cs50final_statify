@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="/static/favourites_styles.css" rel="stylesheet">
+    <link href="/static/favourite_genres_styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Favourite genres
+{% endblock %}
+
+{% block main %}
+<div class="chart-wrapper">
+  <span class="section-header"> <span class="section-header-top-20">Top 20</span> genres - {{ displayed_time_range }}</span>
+  <div class="chart-container">
+      <canvas id="chart"></canvas>
+  </div>
+</div>
+
+
+<input type="hidden" id="genres_data" value="{{ sorted_genres_data }}"> 
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/scripts/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- This is the script responsible for chart display -->
+<script>
+    const genres_data_input = document.getElementById("genres_data");
+    const genres_data = JSON.parse(genres_data_input.value);
+
+    const genres = genres_data.map(item => item[0]);
+    const numbers = genres_data.map(item => item[1]); 
+
+    const ctx = document.getElementById('chart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: genres,
+        datasets: [{
+          label: 'Number of artists involved in genre',
+          data: numbers,
+          borderWidth: 1.5,
+          borderRadius: 10,
+        //   borderColor: 'rgb(29 , 185, 100)',
+          backgroundColor: 'rgb(74 , 199, 131)'
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false, // Allow canvas to fill the height
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+                color: '#191414',
+                font: {
+                    family: 'Inter,  sans-serif',
+                    size: 14,
+                    weight: 350,
+                },
+                callback: function(value, index, values) {
+                    return `${index + 1}. ${genres[index]}`; // Append numeration to original label
+                }
+            }
+          },
+          x: {
+            ticks: {
+                display: false
+            },
+            grid: {
+                display: false
+            },
+          }
+        }
+      }
+    });
+</script>
+{% endblock %}

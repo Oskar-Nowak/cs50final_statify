@@ -1,0 +1,16 @@
+.chart-wrapper {
+    margin-top: 15px !important;
+}
+
+.chart-container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    height: 1150px !important;
+    overflow-y: scroll;
+}
+
+#chart {
+    height: 100%; /* Make the canvas fill its parent */
+    width: 100%; /* Ensure it is responsive */
+}

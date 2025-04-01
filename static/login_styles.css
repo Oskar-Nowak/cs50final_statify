@@ -1,0 +1,91 @@
+body {
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.login-btn {
+    background-color: #1DB964 !important;
+    color: #FFFFFF !important;
+    width: 100px;
+    font-weight: 200 !important;
+    border-radius: 75px !important;
+}
+
+.login-btn:hover {
+    background-color: #179f54 !important;
+}
+
+.login-custom-text {
+    font-size: 4rem;
+    font-weight: 25;
+    color: #1DB964;
+    line-height: 1.1;
+    user-select: none;
+    word-wrap: break-word;
+}
+
+.highlighted {
+    font-size: 6rem;
+}
+
+#line-1 {
+    margin-left: -40px;
+}
+
+#line-2 {
+    margin-left: 60px;
+}
+
+#line-3 {
+    font-size: 2.5rem;
+    margin-top: 50px;
+}
+
+
+
+.typewriter {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    background-color: transparent;
+    vertical-align: bottom;
+    font-size: 2.5rem; /* Adjust as per your design */
+    position: relative;
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink-box-caret 0.75s step-end infinite;
+    vertical-align: center;
+    color: #191414;
+}
+
+@keyframes blink-box-caret {
+    50% {
+        color: transparent;
+    }
+}
+
+
+
+
+
