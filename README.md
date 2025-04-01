@@ -2,7 +2,7 @@
 
 Statify is a web application that connects with the Spotify API to display your top tracks, favourite artists, genres, and allows you to create playlists from this data. It's built using Flask for the backend, with HTML, CSS, and JavaScript for the front-end. This application was made as a CS50 final project.
 
-### Video Demo: <https://youtu.be/cdyzZJGOYw0>
+![](images/image1.png)
 
 ## Table of Contents
 
